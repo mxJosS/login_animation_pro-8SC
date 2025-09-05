@@ -8,44 +8,51 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
+// Cerebro de la lógica de animaciones
 class _LoginScreenState extends State<LoginScreen> {
-  //Cerebro de la lógica de animaciones
+  //StateMachine Controller
   StateMachineController? controller;
 
-  SMIBool? isChecking;
-  SMIBool? isHandsUp;
-  SMITrigger? trigSuccess;
-  SMITrigger? trigFail;
+  //State Machine Input y es de tipo booleano
+  SMIBool? isChecking; //Activa al oso chismoso
+  SMIBool? isHandsUp; //tapa los ojos
+  SMITrigger? trigSuccess; //para animacion de exito
+  SMITrigger? trigFail; //para animacion de fracaso
   SMIInput? numLook;
-  bool _isHidden = true;
+
+  bool _obscureText = true; // 👀 estado para mostrar/ocultar contraseña
+
   @override
   Widget build(BuildContext context) {
-    //para obtener el tamaño de pantalla del dispositivo
+    //Para obtener el tamaño de la pantalla del dispositivo
     final Size size = MediaQuery.of(context).size;
-
     return Scaffold(
-      //Scaffold significa en espaol andamio
+      //Widget para crear la estructura basica de una pantalla
+      //SafeArea para evitar que los elementos se superpongan con la barra de estado o la barra de navegación
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Column(
-            //axis o eje principal
+            //Axis o eje vertical
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              //Animacion
               SizedBox(
-                //ancho de la pantalla calulado por mediaquery
+                //Ancho de la pantalla calculado por MediaQuery
                 width: size.width,
                 height: 200,
                 child: RiveAnimation.asset(
                   'animated_login_character.riv',
-                  stateMachines: ["Login Machine"],
+                  stateMachines: ['Login Machine'],
                   onInit: (artboard) {
                     controller = StateMachineController.fromArtboard(
                       artboard,
-                      "Login Machine",
+                      'Login Machine',
                     );
                     if (controller == null) return;
                     artboard.addController(controller!);
+
+                    //Enlaza la animacion de la app
                     isChecking = controller!.findSMI('isChecking');
                     isHandsUp = controller!.findSMI('isHandsUp');
                     trigSuccess = controller!.findSMI('trigSuccess');
@@ -54,63 +61,66 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
               ),
+
+              //Espacio entre la animacion y el texto
               const SizedBox(height: 10),
               TextField(
                 onChanged: (value) {
+                  //Si el valor del campo de texto es mayor a 0 caracteres
                   if (isHandsUp != null) {
-                    //NO suba las manos al escribir Email
-                    isHandsUp!.change(false);
+                    isHandsUp!.change(false); //El oso chismoso ve el texto
                   }
-                  //Verifica que este SMI no sea nulo
-                  if (isChecking == null) return;
-                  isChecking!.change(true);
+                  if (isChecking != null) {
+                    isChecking!.change(true);
+                  }
                   if (numLook != null) {
                     numLook!.value = value.length.toDouble();
                   }
                 },
+                //Teclado de tipo email
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  hintText:
-                      "Email", //hintText que significa texto de sugerencia
-                  prefixIcon: const Icon(
-                    Icons.mail,
-                  ), //lo primero que se ve en tu pantalla de donde escribes
+                  hintText: 'Email',
+                  prefixIcon: const Icon(Icons.mail),
                   border: OutlineInputBorder(
+                    //Bordes circulares
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
               ),
+
               const SizedBox(height: 10),
               TextField(
                 onChanged: (value) {
+                  //Si el valor del campo de texto es mayor a 0 caracteres
                   if (isHandsUp != null) {
-                    //NO suba las manos al escribir
-                    isHandsUp!.change(false);
+                    isHandsUp!.change(
+                      true,
+                    ); //tapa los ojos al escribir contraseña
                   }
-                  //Verifica que este SMI no sea nulo
-                  if (isHandsUp == null) return;
-                  isHandsUp!.change(true);
                 },
-
-                //para que no se vea la contraseña
-                obscureText: _isHidden,
+                //Para que se oculte la contraseña
+                obscureText: _obscureText,
                 decoration: InputDecoration(
                   hintText: 'Password',
-                  suffixIcon: GestureDetector(
-                    onTap: _togglePasswordView,
-                    child: Icon(
-                      _isHidden ? Icons.visibility : Icons.visibility_off,
-                    ),
-                  ), //hintText que significa texto de sugerencia
-                  prefixIcon: const Icon(
-                    Icons.lock,
-                  ), //lo primero que se ve en tu pantalla de donde escribes
-
+                  prefixIcon: const Icon(Icons.lock),
                   border: OutlineInputBorder(
+                    //Bordes circulares
                     borderRadius: BorderRadius.circular(12),
+                  ),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscureText ? Icons.visibility : Icons.visibility_off,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
                   ),
                 ),
               ),
+
               const SizedBox(height: 10),
               SizedBox(
                 width: size.width,
@@ -120,21 +130,26 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(decoration: TextDecoration.underline),
                 ),
               ),
-              //Boton login
+
               const SizedBox(height: 10),
               MaterialButton(
                 minWidth: size.width,
                 height: 50,
-                color: Colors.red,
+                color: Colors.blue,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                onPressed: () {},
+                onPressed: () {}, //función vacía de momento
                 child: const Text(
-                  "Login",
-                  style: TextStyle(color: Colors.white),
+                  'Login',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
+
               const SizedBox(height: 10),
               SizedBox(
                 width: size.width,
@@ -145,11 +160,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextButton(
                       onPressed: () {},
                       child: const Text(
-                        "Register",
+                        'Register', //texto del boton de registro
                         style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline,
+                          color: Colors.black, //color del texto
+                          fontWeight: FontWeight.bold, //negrita
+                          decoration: TextDecoration.underline, //subrayado
                         ),
                       ),
                     ),
@@ -161,11 +176,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  }
-
-  void _togglePasswordView() {
-    setState(() {
-      _isHidden = !_isHidden;
-    });
   }
 }
