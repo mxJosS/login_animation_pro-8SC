@@ -13,13 +13,17 @@ class _LoginScreenState extends State<LoginScreen> {
   //Cerebro de la lógica de animación
   StateMachineController? controller;
 
-  SMIBool? isChecking; //Activar al Oso chismoso
+  SMIBool? isChecking; //Activar al oso chismoso
   SMIBool? isHandsUp; //Se tapa los ojos
   SMITrigger? trigSuccess; //Se emociona
   SMITrigger? trigFail; //Se pone muy sad
 
   //Variable para mover los ojos:
   SMINumber? numLook;
+
+  // Controladores de texto
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   //Nueva variable para controlar la visibilidad de la contraseña
   bool isPasswordVisible = false;
@@ -53,6 +57,8 @@ class _LoginScreenState extends State<LoginScreen> {
     emailFocusNode.dispose();
     passwordFocusNode.dispose();
     typingTimer?.cancel();
+    emailController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
@@ -85,7 +91,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     isHandsUp = controller!.findSMI('isHandsUp');
                     trigSuccess = controller!.findSMI('trigSuccess');
                     trigFail = controller!.findSMI('trigFail');
-
                     numLook = controller!.findSMI('numLook');
                   },
                 ),
@@ -93,6 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 10),
               //Email
               TextField(
+                controller: emailController,
                 focusNode: emailFocusNode,
                 onChanged: (value) {
                   if (isHandsUp != null) {
@@ -108,7 +114,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   typingTimer?.cancel();
                   typingTimer = Timer(const Duration(seconds: 1), () {
-                    // aqui se modifica el tiempo en el que el oso deja de mirar
                     if (isChecking != null) isChecking!.change(false);
                   });
                 },
@@ -124,6 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 10),
               //Password
               TextField(
+                controller: passwordController,
                 focusNode: passwordFocusNode,
                 onChanged: (value) {
                   if (isChecking != null) {
@@ -170,7 +176,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  String email = emailController.text.trim();
+                  String password = passwordController.text.trim();
+
+                  setState(() {
+                    if (email == "joseangel@tec.mx" && password == "12345") {
+                      if (trigSuccess != null) {
+                        trigSuccess!.fire(); // Oso feliz 🎉
+                      }
+                    } else {
+                      if (trigFail != null) {
+                        trigFail!.fire(); // Oso triste 😢
+                      }
+                    }
+                  });
+                },
                 child: const Text(
                   "Login",
                   style: TextStyle(color: Colors.white),
