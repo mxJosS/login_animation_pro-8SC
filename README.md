@@ -29,4 +29,4 @@ Editors: Visual Studio Code, Android Studio
 ![Flutter Demo - Perfil 1_ Microsoft_ Edge 2025-09-18 16-16-42](https://github.com/user-attachments/assets/e7113bb4-20f4-4d7a-9bea-e71cef391ec4)
 
 
-credit for the bear feature to 
+credit for the bear feature to dexterc https://rive.app/marketplace/3645-7621-remix-of-login-machine/
