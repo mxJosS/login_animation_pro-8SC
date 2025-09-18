@@ -1,46 +1,24 @@
-Nombre de la app 📱
+Login_Animation_pro_8SC 📱
 
-Breve descripción de 1–2 líneas: ¿qué hace tu app y para quién?
-
-
-
-
-
-
-
-
-
+Es una aplicacion móvil creada en Dart, utilizando Flutter una framework creada por google en 2017.
+Esta aplicacion utiliza animaciones de Rive el cual es un motor de animaciones interactivas.
 
 ✨ Características principales
 
-✅ Funcionalidad 1 (ej. autenticación con correo/Google)
+✅ Funcionalidad 1 ----> Login de sesión 
 
-✅ Funcionalidad 2 (ej. listado y detalle de X)
+✅ Funcionalidad 2 ----> Animaciones Chidas con Rive
 
-✅ Funcionalidad 3 (ej. modo oscuro, offline, etc.)
+✅ Funcionalidad 3 ----> Uso de Rive y Flutter
 
-🔒 Seguridad (ej. almacenamiento seguro, .env)
+🧱 Tecnologías:
 
-🌐 Multi-idioma (es/en)
+Framework móvil: Flutter
 
-🧱 Tecnologías
+CI/CD: GitHub 
 
-Framework móvil: Flutter o React Native (borra lo que no uses)
+Editor: Visual Studio Code, Android Studio.
 
-Gestión de estado: Provider / Riverpod / Redux / Zustand (elige uno)
-
-Backend / API: (ej. REST con Django, Firebase, Supabase)
-
-Base de datos local: (ej. Hive / SQflite / AsyncStorage)
-
-CI/CD: GitHub Actions (opcional)
-
-🚀 Instalación y ejecución
-
-Requisitos generales:
-
-Node 18+ (si usas RN) / Flutter 3.22+ (si usas Flutter)
-
-Android Studio y/o Xcode configurados
-
-Dispositivo o emulador
+Proyecto de: Jose Angel Espinosa García 
+Materia: Prog. Aplic. Móv. 8SC
+Docente: Rodrigo Fidel Gaxiola Sosa
