@@ -20,5 +20,7 @@ CI/CD: GitHub
 Editor: Visual Studio Code, Android Studio.
 
 Proyecto de: Jose Angel Espinosa García 
+
 Materia: Prog. Aplic. Móv. 8SC
+
 Docente: Rodrigo Fidel Gaxiola Sosa
