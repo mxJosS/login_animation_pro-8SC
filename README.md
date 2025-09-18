@@ -18,5 +18,7 @@ CI/CD: GitHub
 Editors: Visual Studio Code, Android Studio
 
 📌 Project by: Jose Angel Espinosa García
+
 📘 Course: Mobile Application Programming (8SC)
+
 👨‍🏫 Instructor: Rodrigo Fidel Gaxiola Sosa
