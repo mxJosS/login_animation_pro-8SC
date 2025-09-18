@@ -1,26 +1,22 @@
 Login_Animation_pro_8SC 📱
 
-Es una aplicacion móvil creada en Dart, utilizando Flutter una framework creada por google en 2017.
-Esta aplicacion utiliza animaciones de Rive el cual es un motor de animaciones interactivas.
+This is a mobile application built in Dart, using Flutter, a framework created by Google in 2017.
+The app uses Rive animations, an engine for interactive animations.
 
-✨ Características principales
+✨ Main Features
 
-✅ Funcionalidad 1 ----> Login de sesión 
+✅ Feature 1 → User Login
+✅ Feature 2 → Cool Animations with Rive
+✅ Feature 3 → Integration of Rive + Flutter
 
-✅ Funcionalidad 2 ----> Animaciones Chidas con Rive
+🧱 Technologies
 
-✅ Funcionalidad 3 ----> Uso de Rive y Flutter
+Mobile Framework: Flutter
 
-🧱 Tecnologías:
+CI/CD: GitHub
 
-Framework móvil: Flutter
+Editors: Visual Studio Code, Android Studio
 
-CI/CD: GitHub 
-
-Editor: Visual Studio Code, Android Studio.
-
-Proyecto de: Jose Angel Espinosa García 
-
-Materia: Prog. Aplic. Móv. 8SC
-
-Docente: Rodrigo Fidel Gaxiola Sosa
+📌 Project by: Jose Angel Espinosa García
+📘 Course: Mobile Application Programming (8SC)
+👨‍🏫 Instructor: Rodrigo Fidel Gaxiola Sosa
