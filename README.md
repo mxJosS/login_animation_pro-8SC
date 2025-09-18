@@ -6,7 +6,9 @@ The app uses Rive animations, an engine for interactive animations.
 ✨ Main Features
 
 ✅ Feature 1 → User Login
+
 ✅ Feature 2 → Cool Animations with Rive
+
 ✅ Feature 3 → Integration of Rive + Flutter
 
 🧱 Technologies
