@@ -23,9 +23,9 @@ Editors: Visual Studio Code, Android Studio
 
 📘 Course: Mobile Application Programming (8SC)
 
-
-https://github.com/user-attachments/assets/fe4f4117-720f-4913-8f1a-e4120ea5c853
-
-
 👨‍🏫 Instructor: Rodrigo Fidel Gaxiola Sosa
+
+
+![Flutter Demo - Perfil 1_ Microsoft_ Edge 2025-09-18 16-16-42](https://github.com/user-attachments/assets/e7113bb4-20f4-4d7a-9bea-e71cef391ec4)
+
 
